@@ -43,15 +43,15 @@ Navigate via the topbar to the products page. This page shows all products verba
 
 ![img](./imgs/products.jpg)
 
-Filtering for "plunge" shows the correct result:
+Filtering for "plunge" shows the correct result. A note on the active / inactive toggles, they're both there (and cannot both be active together due to a snippet of JS) to allow for searches that are active only, inactive only, or both.
 
 ![img](./imgs/plunge.jpg)
 
-Here is the update page using the first item:
+Here is the update page using the wrench item:
 
 ![img](./imgs/update.jpg)
 
-The delete page of that same item is different, showing only in text the item's details, functioning as a confirmation page.
+The delete page of the dummys guide item is a different page, showing only in text the item's details, functioning as a confirmation page.
 
 ![img](./imgs/delete.jpg)
 
