@@ -1,0 +1,90 @@
+﻿@using PlumbworldDemo.Models.Products
+
+@model ProductsViewModel;
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>Product Management</h1>
+
+<form asp-controller="Products" asp-action="Index" class="col-md-6 m-4" method="get">
+    <h2>Filter</h2>
+    <div class="row">
+        <div class="col-3">
+            <label for="q" class="control-label">Name:</label>
+        </div>
+        <div class="col-9">
+            <input id="q" class="form-control" name="q" value="@ViewData["q"]" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <label for="active" class="control-label">Active:</label>
+        </div>
+        <div class="col-3">
+            <input id="active" type="checkbox" class="form-check-input" name="active"
+                   checked="@(((string?)ViewData["active"]) == "on")" onclick="toggleActivity(this)" />
+        </div>
+        <div class="col-3">
+            <label for="inactive" class="control-label">Inactive:</label>
+        </div>
+        <div class="col-3">
+            <input id="inactive" type="checkbox" class="form-check-input" name="inactive"
+                   checked="@(((string?)ViewData["inactive"]) == "on")" onclick="toggleActivity(this)" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-3 col-9">
+            <input type="submit" class="btn btn-sm btn-primary" value="Search" />
+        </div>
+    </div>
+</form>
+
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Active?</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.Products)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Name</td>
+                <td>@p.Description</td>
+                <td>@p.Price</td>
+                <td>@p.Stock</td>
+                <td>@(p.IsActive ? "Active" : "")</td>
+                <td>
+                    <div class="btn-group">
+                        <a href="/Products/Update/@p.Id" class="btn btn-sm btn-warning" role="button">Update</a>
+                        <a href="/Products/Delete/@p.Id" class="btn btn-sm btn-danger" role="button">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6"></td>
+            <td><a href="/Products/Create" class="btn btn-sm btn-success" role="button">Create New</a></td>
+        </tr>
+    </tfoot>
+</table>
+
+<script>
+    function toggleActivity(el) {
+        let otherId = el.id == "active" ? "inactive" : "active";
+        if(el.checked) document.getElementById(otherId).checked = false;
+    }
+</script>
