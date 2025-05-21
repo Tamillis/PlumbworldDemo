@@ -77,7 +77,7 @@ The project uses typical Model View Controller architecture, alongside ASP.NET's
 
 ![img](./imgs/programcs.jpg)
 
-You will notice one of the dependencies is a service layer, `ProductsService.cs`, a.k.a. the Repository pattern.
+You will notice one of the dependencies is a service layer, `ProductsService.cs`, a.k.a. the Repository pattern. Note the IQueryable type for the Products property, this allows dynamic query building on the controller side, dependent on passed in parameters, and a single efficient call to the database. A bit overkill for such a tiny embedded db like this one, but very handy on large production databases.
 
 ![img](./imgs/productsservice.jpg)
 
@@ -91,7 +91,7 @@ This test file goes on so please look at it directly.
 ## Closing Comments
 It was nice to work within the most modern version of .NET again, and to re-familiarise myself with how the modern tooling works. It took a reasonable amount of time to get set up using the blank template and some help from the documentation. One of the biggest time sinks by far was using Moq as I hadn't in over a year and a half, so I lost more time there than I thought.
 
-It means the other pages were not as detailed as I'd liked, as I was focusing more on good clean good underneath. The UI is... bootstrap basic let's say. I'd have loved to have added quality of life features like column sorting, pagination, navigation and better user guidance (the UI currently very much assumes the users knows what they're looking at).
+It means the other pages were not as detailed as I'd liked, as I was focusing more on good clean code underneath. The UI is... bootstrap basic let's say. I'd have loved to have added quality of life features like column sorting, pagination, navigation and better user guidance (the UI currently very much assumes the users knows what they're looking at).
 
 I also had a plan to incorporate a login page with basic cookie-based authentication and authorisation that I've used before and in theory could just port over, but I didn't in the end have time. It was always a "in case I have extra time" idea anyway.
 
